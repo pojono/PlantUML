@@ -30,7 +30,7 @@ Component diagram.
 
 Также имеются два примера ER-диаграмм.
 
-
+Сервис для онлайн генерации картинок: http://www.plantuml.com/plantuml/
 
 
 
