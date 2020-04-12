@@ -34,6 +34,8 @@ Component diagram.
 
 Также имеются два примера ER-диаграмм.
 
+TODO: добавить примеры из https://github.com/milo-minderbinder/AWS-PlantUML
+
 Ниже изображения, полученные из puml файлов:
 
 ## context1.puml
