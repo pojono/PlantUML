@@ -32,7 +32,7 @@ Component diagram.
 
 Сервис для онлайн генерации картинок: http://www.plantuml.com/plantuml/
 
-
+Подробнее о типах диаграмм: http://static.codingthearchitecture.com/c4.pdf
 
 
 
