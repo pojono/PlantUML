@@ -1,0 +1,45 @@
+'source: http://static.codingthearchitecture.com/c4.pdf
+@startuml
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Component.puml
+
+title Component diagram for techtribes.js - Content Updater
+
+ContainerDb(db, "Relational Database", "MySQL 5.5.x")
+Container(fs, "File system", "Container")
+Container(mongo, "NoSQL Data Store", "MongoDB 2.2.x")
+
+Container_Boundary(api, "API Application") {
+    Component(github, "GitHub Component", "Spring Bean and JDBC", "Provides access to GitHub \nrepos.")
+    Component(search, "Search Component", "Spring Bean and Apache Lucene", "Search facilities for news \nfeed entries and tweets.")
+    Component(news, "News Feed Entry Component", "Spring Bean and MongoDB", "Provides access to blog \nentries and news.")
+    Component(tweet, "Tweet Component", "Spring Bean and MongoDB", "Provides access to tweets.")
+
+    Component(scheduled, "Scheduled Content Updater", "Spring Scheduled Task", "Refreshes infromation from \nexternal systems every 15 \nminutes.")
+    Component(logging, "Logging Component", "Spring Bean and log4j", "Provides logging facilities to \nall other componenets.")
+    Component(twitter, "Twitter Connector", "Spring Bean and Twitter4j", "Retrieves profile \ninfromation and tweets \n(using the REST and \nStreaming APIs).")
+    Component(github_c, "Github Connector", "Spring Bean and Eclipse Mylyn", "Retrieves infromation about \npublic repos.")
+    Component(news_c, "News Feed Connector", "Spring Bean and ROME", "Retrieves content from RSS \nand Atom feeds.")
+
+    Rel_U(scheduled, github, "Updates GitHub repos using")
+    Rel_U(scheduled, search, "Updates search indexes using")
+    Rel_U(scheduled, news, "Stores blog entries using")
+    Rel_U(scheduled, tweet, "Stores tweets using")
+    Rel_D(scheduled, twitter, "Uses")
+    Rel_D(scheduled, github_c, "Uses")
+    Rel_D(scheduled, news_c, "Uses")
+}
+
+System_Ext(twitter_ex, "Twitter")
+System_Ext(github_ex, "GitHub")
+System_Ext(blogs_ex, "Blogs")
+
+Rel_D(twitter, twitter_ex, "Gets profile information \nand tweets from \n[HTTPS]")
+Rel_D(github_c, github_ex, "Gets information \nabout public code \nrepositories from \n[HTTPS]")
+Rel_D(news_c, blogs_ex, "Gets content using RSS \n and Atom feeds from \n[HTTP]")
+
+Rel_U(github, db, "Reads from and writes data to \n[SQL/JDBC, port 3306]")
+Rel_U(search, fs, "Writes to")
+Rel_U(news, mongo, "Reads from and writes data to \n[Mongo DB Wire Protocol, port 27017]")
+Rel_U(tweet, mongo, "Reads from and writes data to \n[Mongo DB Wire Protocol, port 27017]")
+
+@enduml
