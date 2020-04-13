@@ -26,6 +26,16 @@ Component diagram.
     Component
     ComponentDb
 
+Relations.
+
+    Rel
+    Rel_U
+    Rel_R
+    Rel_D
+    Rel_L
+    Rel_Back
+    Rel_Neighbor
+
 Справка: https://github.com/RicardoNiepel/C4-PlantUML
 
 Сервис для онлайн генерации картинок: http://www.plantuml.com/plantuml/
@@ -33,5 +43,3 @@ Component diagram.
 Подробнее о типах диаграмм: http://static.codingthearchitecture.com/c4.pdf
 
 Также имеются два примера ER-диаграмм.
-
-TODO: добавить примеры из https://github.com/milo-minderbinder/AWS-PlantUML
