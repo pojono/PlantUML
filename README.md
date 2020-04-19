@@ -77,6 +77,7 @@ Import: `!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML
 ### Container diagram
 
 Import: `!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Container.puml`
+
 Данный импорт также включает в себя все элементы контекстного уровня.
 
 Поддерживаемые элементы:
@@ -88,6 +89,7 @@ Import: `!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML
 ### Component diagram
 
 Import: `!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Component.puml`
+
 Данный импорт также включает в себя все элементы контекстного и контейнерного уровня.
 
 Поддерживаемые элементы:
@@ -111,19 +113,50 @@ Import: `!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML
 Общий синтаксис такой:
 
 ```
-    Rel(from, to, "description", "technology")
+Rel(from, to, "description", "technology")
 ```
 
-## Настройка и установка
+## Настройки отображения
 
-Для корректной работы плагинов необходимо иметь установленную JAVA и GRAPHVIZ
+Вы можете управлять настройками отображения добавив данные команды в свой `.puml` файл после import:
 
-Для облегчения работы в IDE можно установить дополнительные плагины для проверки синтаксиса и отрисовки.
+* `LAYOUT_TOP_DOWN` или `LAYOUT_LEFT_RIGHT` - располагать элементы сверху вниз или справа налево
+* `LAYOUT_WITH_LEGEND()` - добавить легенду на схему
+* `LAYOUT_AS_SKETCH()` - изменить стиль на "черновик"
 
-VSCode: https://github.com/qjebbs/vscode-plantuml
-Intellij IDEA: https://plugins.jetbrains.com/plugin/7017-plantuml-integration 
+Данные команды можно комбинировать вместе, например отобразить легенду и поменять стиль на "черновой".
+
+## Дополнительная информация
+
+Чтобы облегчить проектирование в IDE можно установить дополнительные плагины для проверки синтаксиса и отрисовки. 
+
+### Требования для плагинов
+
+Для их корректной работы необходимо иметь установленную Java и Graphviz.
+
+- [Java][Java] : платформа для запуска PlantUML.
+- [Graphviz][Graphviz] : необходима для расчёта позиций на диаграмме.
+
+[Java]: http://java.com/en/download/ "Скачать Java"
+[Graphviz]: http://www.graphviz.org/download/ "Скачать Graphviz"
+
+### Быстрая установка graphviz для MacOS
+
+```sh
+brew cask install java
+brew install graphviz
+```
+
+### Установка плагинов
+
+* VSCode: https://github.com/qjebbs/vscode-plantuml
+* Intellij IDEA: https://plugins.jetbrains.com/plugin/7017-plantuml-integration 
+
+### Сниппеты
 
 Для VSCode в репозитории в папке .vscode лежит сниппет __C4.code-snippets__ для ускорения ввода. Его нужно скопировать в папку .vscode Вашего проекта.
+
+### Полезные ссылки и другие диагрммы
 
 Сервис для онлайн генерации картинок: http://www.plantuml.com/plantuml/
 
